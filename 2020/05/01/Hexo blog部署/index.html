@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo blog部署 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Hexo blog部署1. 下载安装node.js下载node.js 2.Hexo blog部署12npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org	&#x2F;&#x2F;安装淘宝镜像cnpm install -g hexo-cli	&#x2F;&#x2F;安装hexo  在命令行操作的初始目录下创建文件夹 blog  12345cd blog	&#x2F;&#x2F;进入blo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo blog部署">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/Hexo%20blog%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hexo blog部署1. 下载安装node.js下载node.js 2.Hexo blog部署12npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org	&#x2F;&#x2F;安装淘宝镜像cnpm install -g hexo-cli	&#x2F;&#x2F;安装hexo  在命令行操作的初始目录下创建文件夹 blog  12345cd blog	&#x2F;&#x2F;进入blo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-01T14:18:39.446Z">
+<meta property="article:modified_time" content="2020-05-01T14:17:23.275Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,76 +154,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Hexo blog部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Hexo blog部署
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/Hexo%20blog%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+
+        
+        <a href="/2020/05/01/Hexo%20blog%E9%83%A8%E7%BD%B2/" class="archive-article-date">
   	<time datetime="2020-05-01T14:18:39.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/Hexo%20blog%E9%83%A8%E7%BD%B2/">Hexo blog部署</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Hexo-blog部署"><a href="#Hexo-blog部署" class="headerlink" title="Hexo blog部署"></a>Hexo blog部署</h2><h2 id="1-下载安装node-js"><a href="#1-下载安装node-js" class="headerlink" title="1. 下载安装node.js"></a>1. 下载安装node.js</h2><p>下载<strong><a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></strong></p>
+<h2 id="2-Hexo-blog部署"><a href="#2-Hexo-blog部署" class="headerlink" title="2.Hexo blog部署"></a>2.Hexo blog部署</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org	//安装淘宝镜像</span></span><br><span class="line">cnpm install -g hexo-cli	<span class="comment">//安装hexo</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>在命令行操作的初始目录下创建文件夹 <strong>blog</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd blog	<span class="comment">//进入blog文件夹</span></span><br><span class="line">hexo init  <span class="comment">//创建一个博客</span></span><br><span class="line">hexo g  <span class="comment">//生成博客</span></span><br><span class="line">hexo s  <span class="comment">//在本地查看生成的blog</span></span><br><span class="line">cnpm install hexo-deployer-git --save   <span class="comment">//安装推到GitHub的插件</span></span><br></pre></td></tr></table></figure>
 
+<p>在GitHub上创建一个名为<strong><code>GitHub名</code>.github.io</strong>的仓库，打开blog文件夹，找到并修改文件_config.yml，修改部分在底部，这是修改结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git</span><br><span class="line">repo: https:<span class="comment">//github.com/GitHub名/GitHub名.github.io.git</span></span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>命令行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d  <span class="comment">//部署到远端</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>以上，hexo博客部署完成</strong>，此时<strong>https://<code>GitHub名</code>.github.io</strong>就可以访问自己的博客。</p>
+<h2 id="3-更换主题"><a href="#3-更换主题" class="headerlink" title="3.更换主题"></a>3.更换主题</h2><p>以更换<strong>yilia主题</strong>为例</p>
+<p>yilia主题网址：<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd blog  <span class="comment">//进入blog文件夹</span></span><br><span class="line">git clone https:<span class="comment">//github.com/litten/hexo-theme-yilia.git themes/yilia</span></span><br></pre></td></tr></table></figure>
+
+<p>打开blog文件夹，找到并修改文件_config.yml，在的 73 行左右，可以看到配置的默认主题<strong>theme: landscape</strong>，所对应的是 themes 目录下的 landscape 目录。把landscape改为yilia。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
+
+<p>命令行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  <span class="comment">//清理</span></span><br><span class="line">hexo g <span class="comment">//生成博客</span></span><br><span class="line">hexo s <span class="comment">//本地查看</span></span><br><span class="line">hexo d <span class="comment">//部署到远端</span></span><br></pre></td></tr></table></figure>
+
+<p>更换主题完成。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/01/Hexo%20blog%E9%83%A8%E7%BD%B2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-01T12:31:54.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -242,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
