@@ -125,12 +125,12 @@
 
 <meta name="description" content="学习Java每一天">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java学习日记 1">
+<meta property="og:title" content="Java学习日记1——数组">
 <meta property="og:url" content="http://yoursite.com/2020/05/03/JAVA%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%201/index.html">
 <meta property="og:site_name" content="梁山好岗のBLOG">
 <meta property="og:description" content="学习Java每一天">
 <meta property="article:published_time" content="2020-05-03T12:17:09.305Z">
-<meta property="article:modified_time" content="2020-05-04T17:24:05.112Z">
+<meta property="article:modified_time" content="2020-05-07T08:58:38.174Z">
 <meta property="article:author" content="梁山好岗">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -169,7 +169,7 @@
 
 
 
-  <title>Java学习日记 1 | 梁山好岗のBLOG</title>
+  <title>Java学习日记1——数组 | 梁山好岗のBLOG</title>
   
 
 
@@ -323,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java学习日记 1</h1>
+          <h1 class="post-title" itemprop="name headline">Java学习日记1——数组</h1>
         
 
         <div class="post-meta">
@@ -396,7 +396,6 @@
 
       
         <center>学习Java每一天</center>
-
 <a id="more"></a>
 
 <h2 id="IDEA常用快捷键"><a href="#IDEA常用快捷键" class="headerlink" title="IDEA常用快捷键"></a>IDEA常用快捷键</h2><table>
@@ -447,6 +446,42 @@
 <td>代码提示</td>
 </tr>
 </tbody></table>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h3><p>a. 数组的初始化分为</p>
+<ol>
+<li><p>静态初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般的静态初始化</span></span><br><span class="line"><span class="keyword">int</span>[] array0 = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>&#125;; </span><br><span class="line"><span class="comment">// 静态初始化的省略格式</span></span><br><span class="line">      <span class="keyword">int</span>[] array1 = &#123; <span class="number">5</span>, <span class="number">25</span>, <span class="number">35</span> &#125;;</span><br><span class="line">      <span class="comment">// 分成两步初始化，分成两步来写就不能使用省略格式了</span></span><br><span class="line">      <span class="keyword">int</span>[] array2;</span><br><span class="line">      array2 = <span class="keyword">new</span>  <span class="keyword">int</span>[] &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>动态初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般的动态初始化</span></span><br><span class="line"><span class="keyword">int</span>[] array0 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line"><span class="comment">// 分成两步的动态初始化</span></span><br><span class="line"><span class="keyword">int</span>[] array1;</span><br><span class="line">array1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">System.out.println(array1); <span class="comment">// 直接打印数组名称，得到数组对应的，内存地址哈希值</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>b. 初始化的默认值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  使用动态初始化的时候，其中的元素将会自动拥有一个默认值，规则如下：</span></span><br><span class="line"><span class="comment">*  1. 如果是整数类型，那么默认值为0；</span></span><br><span class="line"><span class="comment">*  2. 如果是浮点类型，那么默认值为0。0</span></span><br><span class="line"><span class="comment">*  3. 如果是字符类型，那么默认值为' \u0000'；</span></span><br><span class="line"><span class="comment">*  4. 如果是字符串类型，那么默认值为null；</span></span><br><span class="line"><span class="comment">*  5. 如果是布尔类型，那么默认值为false</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo05ArrayUse</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">        System.out.println(array); <span class="comment">// 内存地址哈希值</span></span><br><span class="line">        System.out.println(array[<span class="number">0</span>]); <span class="comment">// 0</span></span><br><span class="line">        System.out.println(array[<span class="number">1</span>]); <span class="comment">// 0</span></span><br><span class="line">        System.out.println(array[<span class="number">2</span>]); <span class="comment">// 0</span></span><br><span class="line">        array[<span class="number">1</span>] = <span class="number">123</span>;</span><br><span class="line">        System.out.println(array[<span class="number">1</span>]); <span class="comment">// 123</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组的错误"><a href="#数组的错误" class="headerlink" title="数组的错误"></a>数组的错误</h3><ol>
+<li><p>越界异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果访问数组编号的时候，索引编号不存在，那么将会发生数组索引越界异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01ArrayIndex</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123; <span class="number">5</span>, <span class="number">25</span>, <span class="number">35</span> &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 错误写法</span></span><br><span class="line">        <span class="comment">// 不存在第三号元素，所以发生异常</span></span><br><span class="line">        System.out.println(array[<span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>空指针异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有索引类型变量，都可以赋值为一个null值。但是代表其中什么都没有。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">数组必须进行new初始化才能使用其中的元素。</span></span><br><span class="line"><span class="comment">如果只赋值了一个null，没有进行new创建</span></span><br><span class="line"><span class="comment">那么就会发生：空指针异常 NullPointerException*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02ArrayNull</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">null</span>;</span><br><span class="line">        System.out.println(array[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="数组与方法"><a href="#数组与方法" class="headerlink" title="数组与方法"></a>数组与方法</h3><ol>
+<li><p>数组作为方法的参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 数组作为参数</span></span><br><span class="line"><span class="comment">* 参数写法：数据类型[] 参数名称</span></span><br><span class="line"><span class="comment">* 传输内容：数组的地址</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01ArrayParam</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>, <span class="number">60</span>&#125;;</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(<span class="string">"===================="</span>);</span><br><span class="line">        arrayPrint(array);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义数组作为参数，遍历数组的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">arrayPrint</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            System.out.println(array[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组作为方法的返回值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 数组作为方法的返回值</span></span><br><span class="line"><span class="comment"> * 方法定义个格式： public static 数组类型[] 函数名称（）&#123;&#125;</span></span><br><span class="line"><span class="comment"> * 返回内容；数组的地址类型*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02ArrayReturn</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array =  calculate(<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(array[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(array[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] calculate(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = a + b;</span><br><span class="line">        <span class="keyword">int</span> ave = sum / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;sum, ave&#125;;</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(<span class="string">"=================="</span>);</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 
       
     </div>
@@ -664,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA常用快捷键"><span class="nav-number">1.</span> <span class="nav-text">IDEA常用快捷键</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA常用快捷键"><span class="nav-number">1.</span> <span class="nav-text">IDEA常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的初始化"><span class="nav-number">2.1.</span> <span class="nav-text">数组的初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的错误"><span class="nav-number">2.2.</span> <span class="nav-text">数组的错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组与方法"><span class="nav-number">2.3.</span> <span class="nav-text">数组与方法</span></a></li></ol></li></ol></div>
             
 
           </div>
