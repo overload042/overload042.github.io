@@ -130,7 +130,7 @@
 <meta property="og:site_name" content="梁山好岗のBLOG">
 <meta property="og:description" content="学习Java每一天">
 <meta property="article:published_time" content="2020-05-03T12:17:09.305Z">
-<meta property="article:modified_time" content="2020-05-07T08:58:38.174Z">
+<meta property="article:modified_time" content="2020-05-11T09:13:18.965Z">
 <meta property="article:author" content="梁山好岗">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -479,7 +479,6 @@
 </li>
 <li><p>数组作为方法的返回值</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 数组作为方法的返回值</span></span><br><span class="line"><span class="comment"> * 方法定义个格式： public static 数组类型[] 函数名称（）&#123;&#125;</span></span><br><span class="line"><span class="comment"> * 返回内容；数组的地址类型*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02ArrayReturn</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array =  calculate(<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(array[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(array[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] calculate(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = a + b;</span><br><span class="line">        <span class="keyword">int</span> ave = sum / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;sum, ave&#125;;</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(<span class="string">"=================="</span>);</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 
@@ -634,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
