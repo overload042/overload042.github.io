@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|隶书:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java学习每一天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习日记10——List、Set、数据结构、Collections">
+<meta property="og:url" content="http://yoursite.com/2020/07/12/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B010%E2%80%94%E2%80%94List%E3%80%81Set%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%81Collections/index.html">
+<meta property="og:site_name" content="梁山好岗のBLOG">
+<meta property="og:description" content="Java学习每一天">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP.3j42MFKbb5G5bKQAvp3lyhK5PLxxy9mh4ypm6dt69S6gRLT*xJPUNI8R81haG.861L18pgG5ooRK6QJS.1yIo!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP8aVFiFpkhn6YjroK*srq*vE.SAQ8YhZmefJa1ZgLfPG8YhUSWWMUboKzuIEK1Q0lbxCVDC7px*rWqtetQYs*Ng!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPxrUuvPvKZC9it0jJLVFRkwQkbR7Vo9jHe7CYCN2McfwmS8USFPI9FQWUwC3iX8Ewjt970PMcwhKihsz7*Pg.OI!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPw2XELB24Kia2Wa7h6CuNiMsUVl*RG2.F9TBMHpLlsnW3uq8mvP5bmUWwgldzQcmdWAkDOMSNl2CO0dlfJovGcU!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP2.XDA0CeIKyUT39hmUL3OW*Cg*DgMtmBc6Re*8jhhFxUBaU*3bToPTuotYHyFTM7tG8APNi1f1UYcxbpddYqjc!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP*ftOL.Na34Tfr6uiiPxgxdGccWkJZ*p8zMNHphalAhGyQb7o5IRRBP0oYETLFwOYQsznkkBagjD52TQIpvekGw!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP9fJQx3VjhAvJh252S19yP2nNtbpppzmyDhATRkmMDWr8Gcnvy1RtWWaiLF0pZpN2dVVGq0D5zWwWNKeIJii*4A!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP9BUMMcXhBmEYmU5enOyEbiFCfuC1zLqKX84hoAbDcr.W6E8ibfbkUeKEj.TPxk*0HjVYgUZ0m.o8iLFaZoLNdU!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPxeukprtBAAoQy8M0t6ITWJJ1SxAW45T6yKhyzcEzbk2MO8bisImGG6qyE8T0qgh*q5C2fPJM*EqbW5HFEN0EEw!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP8F0sMUSbiuYJ7QHlTNg*n3eFjs67.uPFeta3VKiPsyJRz5fQwr3Uo72Bbkf96IHRtq.DTrR0ykRiY4veue7e68!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPwB*cuulqF2seENrTimqklB2shxgeYCxZ0MWRHIw9o2Ox8rGqENRQwYhLg*7XLUXeqv79k*afE9GYYlNG47Ylfg!/r">
+<meta property="article:published_time" content="2020-07-12T10:41:56.553Z">
+<meta property="article:modified_time" content="2020-07-12T13:40:42.075Z">
+<meta property="article:author" content="梁山好岗">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP.3j42MFKbb5G5bKQAvp3lyhK5PLxxy9mh4ypm6dt69S6gRLT*xJPUNI8R81haG.861L18pgG5ooRK6QJS.1yIo!/r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/12/Java学习日记10——List、Set、数据结构、Collections/"/>
+
+
+
+
+
+  <title>Java学习日记10——List、Set、数据结构、Collections | 梁山好岗のBLOG</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7a13b8db27fbff31ebec5f6408bf7751";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梁山好岗のBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就算是梦话也无妨，再说给我听听吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/12/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B010%E2%80%94%E2%80%94List%E3%80%81Set%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%81Collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梁山好岗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梁山好岗のBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java学习日记10——List、Set、数据结构、Collections</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-12T18:41:56+08:00">
+                2020-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <center>Java学习每一天</center>
+<a id="more"></a>
+
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
+<li><strong>栈</strong>：<strong>stack</strong>,又称堆栈，它是运算受限的线性表，其限制是仅允许在标的一端进行插入和删除操作，不允许在其他任何位置进行添加、查找、删除等操作。</li>
+</ul>
+<p>简单的说：采用该结构的集合，对元素的存取有如下的特点</p>
+<ul>
+<li><p>先进后出（即，存进去的元素，要在后它后面的元素依次取出后，才能取出该元素）。例如，子弹压进弹夹，先压进去的子弹在下面，后压进去的子弹在上面，当开枪时，先弹出上面的子弹，然后才能弹出下面的子弹。</p>
+</li>
+<li><p>栈的入口、出口的都是栈的顶端位置。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP.3j42MFKbb5G5bKQAvp3lyhK5PLxxy9mh4ypm6dt69S6gRLT*xJPUNI8R81haG.861L18pgG5ooRK6QJS.1yIo!/r" alt=""></p>
+</li>
+</ul>
+<p>这里两个名词需要注意：</p>
+<ul>
+<li><strong>压栈</strong>：就是存元素。即，把元素存储到栈的顶端位置，栈中已有元素依次向栈底方向移动一个位置。</li>
+<li><strong>弹栈</strong>：就是取元素。即，把栈的顶端位置元素取出，栈中已有元素依次向栈顶方向移动一个位置。</li>
+</ul>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul>
+<li><strong>队列</strong>：<strong>queue</strong>,简称队，它同堆栈一样，也是一种运算受限的线性表，其限制是仅允许在表的一端进行插入，而在表的另一端进行删除。</li>
+</ul>
+<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li>先进先出（即，存进去的元素，要在后它前面的元素依次取出后，才能取出该元素）。例如，小火车过山洞，车头先进去，车尾后进去；车头先出来，车尾后出来。</li>
+<li>队列的入口、出口各占一侧。例如，下图中的左侧为入口，右侧为出口。</li>
+</ul>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP8aVFiFpkhn6YjroK*srq*vE.SAQ8YhZmefJa1ZgLfPG8YhUSWWMUboKzuIEK1Q0lbxCVDC7px*rWqtetQYs*Ng!/r" alt=""></p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li><strong>数组</strong>:<strong>Array</strong>,是有序的元素序列，数组是在内存中开辟一段连续的空间，并在此空间存放元素。就像是一排出租屋，有100个房间，从001到100每个房间都有固定编号，通过编号就可以快速找到租房子的人。</li>
+</ul>
+<p>简单的说,采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li><p>查找元素快：通过索引，可以快速访问指定位置的元素</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPxrUuvPvKZC9it0jJLVFRkwQkbR7Vo9jHe7CYCN2McfwmS8USFPI9FQWUwC3iX8Ewjt970PMcwhKihsz7*Pg.OI!/r" alt=""></p>
+</li>
+<li><p>增删元素慢</p>
+<ul>
+<li><strong>指定索引位置增加元素</strong>：需要创建一个新数组，将指定新元素存储在指定索引位置，再把原数组元素根据索引，复制到新数组对应索引的位置。如下图<img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPw2XELB24Kia2Wa7h6CuNiMsUVl*RG2.F9TBMHpLlsnW3uq8mvP5bmUWwgldzQcmdWAkDOMSNl2CO0dlfJovGcU!/r" alt=""></li>
+<li><strong>指定索引位置删除元素：</strong>需要创建一个新数组，把原数组元素根据索引，复制到新数组对应索引的位置，原数组中指定索引位置元素不复制到新数组中。如下图<img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP2.XDA0CeIKyUT39hmUL3OW*Cg*DgMtmBc6Re*8jhhFxUBaU*3bToPTuotYHyFTM7tG8APNi1f1UYcxbpddYqjc!/r" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
+<li><p><strong>链表</strong>:<strong>linked list</strong>,由一系列结点node（链表中每一个元素称为结点）组成，结点可以在运行时i动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。我们常说的链表结构有单向链表与双向链表，那么这里给大家介绍的是<strong>单向链表</strong>。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP*ftOL.Na34Tfr6uiiPxgxdGccWkJZ*p8zMNHphalAhGyQb7o5IRRBP0oYETLFwOYQsznkkBagjD52TQIpvekGw!/r" alt=""></p>
+</li>
+</ul>
+<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li><p>多个结点之间，通过地址进行连接。例如，多个人手拉手，每个人使用自己的右手拉住下个人的左手，依次类推，这样多个人就连在一起了。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP9fJQx3VjhAvJh252S19yP2nNtbpppzmyDhATRkmMDWr8Gcnvy1RtWWaiLF0pZpN2dVVGq0D5zWwWNKeIJii*4A!/r" alt=""></p>
+</li>
+<li><p>查找元素慢：想查找某个元素，需要通过连接的节点，依次向后查找指定元素</p>
+</li>
+<li><p>增删元素快：</p>
+<ul>
+<li><p>增加元素：只需要修改连接下个元素的地址即可。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP9BUMMcXhBmEYmU5enOyEbiFCfuC1zLqKX84hoAbDcr.W6E8ibfbkUeKEj.TPxk*0HjVYgUZ0m.o8iLFaZoLNdU!/r" alt=""></p>
+</li>
+<li><p>删除元素：只需要修改连接下个元素的地址即可。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPxeukprtBAAoQy8M0t6ITWJJ1SxAW45T6yKhyzcEzbk2MO8bisImGG6qyE8T0qgh*q5C2fPJM*EqbW5HFEN0EEw!/r" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><ul>
+<li><strong>二叉树</strong>：<strong>binary tree</strong> ,是每个结点不超过2的有序<strong>树（tree）</strong> 。</li>
+</ul>
+<p>简单的理解，就是一种类似于我们生活中树的结构，只不过每个结点上都最多只能有两个子结点。</p>
+<p>二叉树是每个节点最多有两个子树的树结构。顶上的叫根结点，两边被称作“左子树”和“右子树”。</p>
+<p>如图：</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rP8F0sMUSbiuYJ7QHlTNg*n3eFjs67.uPFeta3VKiPsyJRz5fQwr3Uo72Bbkf96IHRtq.DTrR0ykRiY4veue7e68!/r" alt=""></p>
+<p>我们要说的是二叉树的一种比较有意思的叫做<strong>红黑树</strong>，红黑树本身就是一颗二叉查找树，将节点插入后，该树仍然是一颗二叉查找树。也就意味着，树的键值仍然是有序的。</p>
+<p>红黑树的约束:</p>
+<ol>
+<li>节点可以是红色的或者黑色的</li>
+</ol>
+<ol start="2">
+<li>根节点是黑色的</li>
+</ol>
+<ol start="3">
+<li>叶子节点(特指空节点)是黑色的</li>
+<li>每个红色节点的子节点都是黑色的</li>
+<li>任何一个节点到其每一个叶子节点的所有路径上黑色节点数相同</li>
+</ol>
+<p>红黑树的特点:</p>
+<p>​    速度特别快,趋近平衡树,查找叶子元素最少和最多次数不多于二倍</p>
+<h2 id="List集合"><a href="#List集合" class="headerlink" title="List集合"></a>List集合</h2><h3 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h3><h4 id="List接口特点"><a href="#List接口特点" class="headerlink" title="List接口特点"></a>List接口特点</h4><ol>
+<li>它是一个元素存取有序的集合。</li>
+<li>它是一个带有索引的集合，通过索引就可以精确的操作集合中的元素（与数组的索引是一个道理）。</li>
+<li>集合中可以有重复的元素，通过元素的equals方法，来比较是否为重复的元素。</li>
+</ol>
+<h4 id="List接口中常用方法"><a href="#List接口中常用方法" class="headerlink" title="List接口中常用方法"></a>List接口中常用方法</h4><p>List作为Collection集合的子接口，不但继承了Collection接口中的全部方法，而且还增加了一些根据元素索引来操作集合的特有方法，如下：</p>
+<ul>
+<li><code>public void add(int index, E element)</code>: 将指定的元素，添加到该集合中的指定位置上。</li>
+<li><code>public E get(int index)</code>:返回集合中指定位置的元素。</li>
+<li><code>public E remove(int index)</code>: 移除列表中指定位置的元素, 返回的是被移除的元素。</li>
+<li><code>public E set(int index, E element)</code>:用指定元素替换集合中指定位置的元素,返回值的更新前的元素。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01List</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个List集合对象,多态</span></span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//使用add方法往集合中添加元素</span></span><br><span class="line">        list.add(<span class="string">"a"</span>);</span><br><span class="line">        list.add(<span class="string">"b"</span>);</span><br><span class="line">        list.add(<span class="string">"c"</span>);</span><br><span class="line">        list.add(<span class="string">"d"</span>);</span><br><span class="line">        list.add(<span class="string">"a"</span>);</span><br><span class="line">        <span class="comment">//打印集合</span></span><br><span class="line">        System.out.println(list);<span class="comment">//[a, b, c, d, a]  不是地址重写了toString</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public void add(int index, E element): 将指定的元素，添加到该集合中的指定位置上。</span></span><br><span class="line">        <span class="comment">//在c和d之间添加一个itheima</span></span><br><span class="line">        list.add(<span class="number">3</span>,<span class="string">"itheima"</span>);<span class="comment">//[a, b, c, itheima, d, a]</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public E remove(int index): 移除列表中指定位置的元素, 返回的是被移除的元素。</span></span><br><span class="line">        <span class="comment">//移除元素</span></span><br><span class="line">        String removeE = list.remove(<span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="string">"被移除的元素:"</span>+removeE);<span class="comment">//被移除的元素:c</span></span><br><span class="line">        System.out.println(list);<span class="comment">//[a, b, itheima, d, a]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public E set(int index, E element):用指定元素替换集合中指定位置的元素,返回值的更新前的元素。</span></span><br><span class="line">        <span class="comment">//把最后一个a,替换为A</span></span><br><span class="line">        String setE = list.set(<span class="number">4</span>, <span class="string">"A"</span>);</span><br><span class="line">        System.out.println(<span class="string">"被替换的元素:"</span>+setE);<span class="comment">//被替换的元素:a</span></span><br><span class="line">        System.out.println(list);<span class="comment">//[a, b, itheima, d, A]</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// get方法在普通for循环遍历中体现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3种遍历方式"><a href="#3种遍历方式" class="headerlink" title="3种遍历方式"></a>3种遍历方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//创建一个List集合对象,多态</span></span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//使用add方法往集合中添加元素</span></span><br><span class="line">        list.add(<span class="string">"a"</span>);</span><br><span class="line">        list.add(<span class="string">"b"</span>);</span><br><span class="line">        list.add(<span class="string">"c"</span>);</span><br><span class="line">        list.add(<span class="string">"d"</span>);</span><br><span class="line">        list.add(<span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//List集合遍历有3种方式</span></span><br><span class="line">        <span class="comment">//使用普通的for循环</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">            <span class="comment">//public E get(int index):返回集合中指定位置的元素。</span></span><br><span class="line">            String s = list.get(i);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"-----------------"</span>);</span><br><span class="line">        <span class="comment">//使用迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            String s = it.next();</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"-----------------"</span>);</span><br><span class="line">        <span class="comment">//使用增强for</span></span><br><span class="line">        <span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="List的子类"><a href="#List的子类" class="headerlink" title="List的子类"></a>List的子类</h3><h4 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h4><p><strong>特点：</strong>元素增删慢，查找快，由于日常开发中使用最多的功能为查询数据、遍历数据，所以<code>ArrayList</code>是最常用的集合。</p>
+<h4 id="LinkedList集合"><a href="#LinkedList集合" class="headerlink" title="LinkedList集合"></a>LinkedList集合</h4><p><strong>特点：</strong>数据存储的结构是双向链表结构。元素增删快，查找慢。</p>
+<p><strong>常用特有方法</strong></p>
+<p>实际开发中对一个集合元素的添加与删除经常涉及到首尾操作，而LinkedList提供了大量首尾操作的方法。这些方法我们作为了解即可：</p>
+<ul>
+<li><code>public void addFirst(E e)</code>:将指定元素插入此列表的开头。</li>
+<li><code>public void addLast(E e)</code>:将指定元素添加到此列表的结尾。</li>
+<li><code>public E getFirst()</code>:返回此列表的第一个元素。</li>
+<li><code>public E getLast()</code>:返回此列表的最后一个元素。</li>
+<li><code>public E removeFirst()</code>:移除并返回此列表的第一个元素。</li>
+<li><code>public E removeLast()</code>:移除并返回此列表的最后一个元素。</li>
+<li><code>public E pop()</code>:从此列表所表示的堆栈处弹出一个元素。</li>
+<li><code>public void push(E e)</code>:将元素推入此列表所表示的堆栈。</li>
+<li><code>public boolean isEmpty()</code>：如果列表不包含元素，则返回true。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02LinkedList</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        show03();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        - public E removeFirst():移除并返回此列表的第一个元素。 同效果：public E pop()</span></span><br><span class="line"><span class="comment">        - public E removeLast():移除并返回此列表的最后一个元素。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show03</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建LinkedList集合对象</span></span><br><span class="line">        LinkedList&lt;String&gt; linked = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="comment">//使用add方法往集合中添加元素</span></span><br><span class="line">        linked.add(<span class="string">"a"</span>);</span><br><span class="line">        linked.add(<span class="string">"b"</span>);</span><br><span class="line">        linked.add(<span class="string">"c"</span>);</span><br><span class="line">        System.out.println(linked);<span class="comment">//[a, b, c]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//String first = linked.removeFirst();</span></span><br><span class="line">        String first = linked.pop();</span><br><span class="line">        System.out.println(<span class="string">"被移除的第一个元素:"</span>+first);</span><br><span class="line">        String last = linked.removeLast();</span><br><span class="line">        System.out.println(<span class="string">"被移除的最后一个元素:"</span>+last);</span><br><span class="line">        System.out.println(linked);<span class="comment">//[b]</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        - public E getFirst():返回此列表的第一个元素。</span></span><br><span class="line"><span class="comment">        - public E getLast():返回此列表的最后一个元素。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建LinkedList集合对象</span></span><br><span class="line">        LinkedList&lt;String&gt; linked = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="comment">//使用add方法往集合中添加元素</span></span><br><span class="line">        linked.add(<span class="string">"a"</span>);</span><br><span class="line">        linked.add(<span class="string">"b"</span>);</span><br><span class="line">        linked.add(<span class="string">"c"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//linked.clear():清空集合中的元素 </span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public boolean isEmpty():如果列表不包含元素，则返回true。</span></span><br><span class="line">        <span class="keyword">if</span>(!linked.isEmpty())&#123;</span><br><span class="line">            String first = linked.getFirst();</span><br><span class="line">            System.out.println(first);<span class="comment">//a</span></span><br><span class="line">            String last = linked.getLast();</span><br><span class="line">            System.out.println(last);<span class="comment">//c</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        - public void addFirst(E e):将指定元素插入此列表的开头。 同效果：public void push(E e)</span></span><br><span class="line"><span class="comment">        - public void addLast(E e):将指定元素添加到此列表的结尾。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建LinkedList集合对象</span></span><br><span class="line">        LinkedList&lt;String&gt; linked = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="comment">//使用add方法往集合中添加元素</span></span><br><span class="line">        linked.add(<span class="string">"a"</span>);</span><br><span class="line">        linked.add(<span class="string">"b"</span>);</span><br><span class="line">        linked.add(<span class="string">"c"</span>);</span><br><span class="line">        System.out.println(linked);<span class="comment">//[a, b, c]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public void addFirst(E e):将指定元素插入此列表的开头。</span></span><br><span class="line">        <span class="comment">//linked.addFirst("www");</span></span><br><span class="line">        linked.push(<span class="string">"www"</span>);</span><br><span class="line">        System.out.println(linked);<span class="comment">//[www, a, b, c]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public void addLast(E e):将指定元素添加到此列表的结尾。此方法等效于 add()</span></span><br><span class="line">        linked.addLast(<span class="string">"com"</span>);</span><br><span class="line">        System.out.println(linked);<span class="comment">//[www, a, b, c, com]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><p><strong>特点：</strong></p>
+<ol>
+<li>不允许存储重复的元素</li>
+<li>没有索引,没有带索引的方法,也不能使用普通的for循环遍历</li>
+</ol>
+<blockquote>
+<p><strong>遍历：</strong>由于没有索引，遍历方法只有：迭代器、增强for。</p>
+</blockquote>
+<h3 id="HashSet集合"><a href="#HashSet集合" class="headerlink" title="HashSet集合"></a>HashSet集合</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>不允许存储重复的元素</li>
+<li>没有索引,没有带索引的方法,也不能使用普通的for循环遍历</li>
+<li>是一个无序的集合,存储元素和取出元素的顺序有可能不一致</li>
+<li>底层是一个哈希表结构(查询的速度非常的快)</li>
+</ol>
+<h4 id="不重复原理"><a href="#不重复原理" class="headerlink" title="不重复原理"></a>不重复原理</h4><p>元素唯一性的方式依赖于：<code>hashCode</code>与<code>equals</code>方法。</p>
+<p>hashCode方法可以返回对象的哈希值（int类型）。</p>
+<p>下图讲解了Set对象存储不会重复的原因：</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2pIQGp/x8kY4KA5QbxWMHFw3I4rPwB*cuulqF2seENrTimqklB2shxgeYCxZ0MWRHIw9o2Ox8rGqENRQwYhLg*7XLUXeqv79k*afE9GYYlNG47Ylfg!/r" alt=""></p>
+<h4 id="存储自定义类型元素"><a href="#存储自定义类型元素" class="headerlink" title="存储自定义类型元素"></a>存储自定义类型元素</h4><p>给HashSet中存放自定义类型元素时，需要重写对象中的hashCode和equals方法，建立自己的比较方式，才能保证HashSet集合中的对象唯一</p>
+<p>创建自定义Student类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Student student = (Student) o;</span><br><span class="line">        <span class="keyword">return</span> age == student.age &amp;&amp;</span><br><span class="line">               Objects.equals(name, student.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSetDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建集合对象   该集合中存储 Student类型对象</span></span><br><span class="line">        HashSet&lt;Student&gt; stuSet = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line">        <span class="comment">//存储 </span></span><br><span class="line">        Student stu = <span class="keyword">new</span> Student(<span class="string">"于谦"</span>, <span class="number">43</span>);</span><br><span class="line">        stuSet.add(stu);</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"郭德纲"</span>, <span class="number">44</span>));</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"于谦"</span>, <span class="number">43</span>));</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"郭麒麟"</span>, <span class="number">23</span>));</span><br><span class="line">        stuSet.add(stu);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Student stu2 : stuSet) &#123;</span><br><span class="line">            System.out.println(stu2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">Student [name=郭德纲, age=<span class="number">44</span>]</span><br><span class="line">Student [name=于谦, age=<span class="number">43</span>]</span><br><span class="line">Student [name=郭麒麟, age=<span class="number">23</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p><code>LinkedHashSet</code>是HashSet下面的一个子类。</p>
+<p>底层是一个哈希表(数组+链表/红黑树)+链表:多了一条链表(记录元素的存储顺序),保证<strong>元素有序</strong></p>
+<p>演示代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedHashSetDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Set&lt;String&gt; set = <span class="keyword">new</span> LinkedHashSet&lt;String&gt;();</span><br><span class="line">		set.add(<span class="string">"bbb"</span>);</span><br><span class="line">		set.add(<span class="string">"aaa"</span>);</span><br><span class="line">		set.add(<span class="string">"abc"</span>);</span><br><span class="line">		set.add(<span class="string">"bbc"</span>);</span><br><span class="line">        Iterator&lt;String&gt; it = set.iterator();</span><br><span class="line">		<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">			System.out.println(it.next());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">  bbb</span><br><span class="line">  aaa</span><br><span class="line">  abc</span><br><span class="line">  bbc</span><br></pre></td></tr></table></figure>
+
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p><strong>作用：</strong>如果传参的时候只能确定参数的类型，不能确定参数的个数（比如1~n个数相加，n不确定），可以使用可变参数。</p>
+<p><strong>格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型... 形参名)&#123;  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可变参数的特殊(终极)写法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(Object...obj)</span></span>&#123;  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeArgs</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 随便输入几个数相加 6  7  2 12 2121</span></span><br><span class="line">        <span class="keyword">int</span> sum = getSum(<span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">12</span>, <span class="number">2121</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可变参数写法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span>... arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">            sum += a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ol>
+<li>一个方法的参数列表，只能有一个可变参数</li>
+<li>如果方法的参数有多个，那么可变参数必须写在参数列表的末尾</li>
+<li>传递的参数个数，可以是0个(不传递)。</li>
+</ol>
+<h2 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h2><h3 id="addAll方法和shuffke方法"><a href="#addAll方法和shuffke方法" class="headerlink" title="addAll方法和shuffke方法"></a>addAll方法和shuffke方法</h3><p><code>public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c, T... elements)</code></p>
+<p><strong>addAll方法：</strong>往集合中一次性添加多个元素。</p>
+<p><code>public static void shuffle(List&lt;?&gt; list)</code></p>
+<p><strong>shuffke：</strong>打乱集合元素顺序。</p>
+<p><strong>使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Collections</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建ArrayList集合</span></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c, T... elements):往集合中添加一些元素。</span></span><br><span class="line">        Collections.addAll(list,<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>);</span><br><span class="line">        System.out.println(list);<span class="comment">//[a, b, c, d, e]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public static void shuffle(List&lt;?&gt; list) 打乱顺序:打乱集合顺序。</span></span><br><span class="line">        Collections.shuffle(list);</span><br><span class="line">        System.out.println(list); <span class="comment">// [c, b, a, e, d]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="sort方法1"><a href="#sort方法1" class="headerlink" title="sort方法1"></a>sort方法1</h3><p><code>public static &lt;T&gt; void sort(List&lt;T&gt; list)</code></p>
+<p><strong>作用：</strong>将集合中元素按照指定规则排序。</p>
+<h4 id="非自定义类型"><a href="#非自定义类型" class="headerlink" title="非自定义类型"></a>非自定义类型</h4><p>对于非自定义类型的集合，可以直接使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Collections</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建ArrayList集合</span></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//往集合中添加一些元素。</span></span><br><span class="line">        Collections.addAll(list,<span class="string">"c"</span>,<span class="string">"b"</span>,<span class="string">"a"</span>,<span class="string">"e"</span>,<span class="string">"d"</span>);</span><br><span class="line">        System.out.println(list); <span class="comment">// [c, b, a, e, d]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//public static &lt;T&gt; void sort(List&lt;T&gt; list) 给集合排序</span></span><br><span class="line">        Collections.shuffle(list);</span><br><span class="line">        System.out.println(list); <span class="comment">// [a, b, c, d, e]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h4><p>对于自定义类型的集合，自定义的类需要连接Comparable接口，泛型为类名，并重写compareTo方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;类名&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">// 省略了构造方法和getter/setter方法</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//重写排序的规则</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(类名 o)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//return 0;//认为元素都是相同的</span></span><br><span class="line">        <span class="comment">//自定义比较的规则,比较两个人的年龄(this,参数Person)</span></span><br><span class="line">        <span class="comment">//return this.getAge() - o.getAge();//年龄升序排序</span></span><br><span class="line">        <span class="keyword">return</span> o.getAge() - <span class="keyword">this</span>.getAge();<span class="comment">//年龄降序排序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="sort方法2"><a href="#sort方法2" class="headerlink" title="sort方法2"></a>sort方法2</h3><p><code>public static &lt;T&gt; void sort(List&lt;T&gt; list，Comparator&lt;? super T&gt; )</code></p>
+<p><strong>作用：</strong>将集合中元素按照指定规则排序。</p>
+<p><strong>使用</strong></p>
+<p>下面以<strong>Integer</strong>举例，其他类型（包括自定义，自定义o1和o2后指定具体变量）类似。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03Sort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list01 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list01.add(<span class="number">1</span>);</span><br><span class="line">        list01.add(<span class="number">3</span>);</span><br><span class="line">        list01.add(<span class="number">2</span>);</span><br><span class="line">        System.out.println(list01);<span class="comment">//[1, 3, 2]</span></span><br><span class="line"></span><br><span class="line">        Collections.sort(list01, <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">            <span class="comment">//重写比较的规则</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">                <span class="comment">//return o1-o2;//升序</span></span><br><span class="line">                <span class="keyword">return</span> o2-o1;<span class="comment">//降序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(list01); <span class="comment">// [3, 2, 1]</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 自定义类型</span></span><br><span class="line">        <span class="comment">/*Collections.sort(list02, new Comparator&lt;Student&gt;() &#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public int compare(Student o1, Student o2) &#123;</span></span><br><span class="line"><span class="comment">                //按照年龄升序排序</span></span><br><span class="line"><span class="comment">                return o1.getAge()-o2.getAge();</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;);*/</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//扩展:了解</span></span><br><span class="line">        <span class="comment">/*Collections.sort(list02, new Comparator&lt;Student&gt;() &#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public int compare(Student o1, Student o2) &#123;</span></span><br><span class="line"><span class="comment">                //按照年龄升序排序</span></span><br><span class="line"><span class="comment">                int result =  o1.getAge()-o2.getAge();</span></span><br><span class="line"><span class="comment">                //如果两个人年龄相同,再使用姓名的第一个字比较</span></span><br><span class="line"><span class="comment">                if(result==0)&#123;</span></span><br><span class="line"><span class="comment">                    result =  o1.getName().charAt(0)-o2.getName().charAt(0);</span></span><br><span class="line"><span class="comment">                &#125;</span></span><br><span class="line"><span class="comment">                return  result;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        &#125;);*/</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/weixin.png" alt="梁山好岗 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/zhifubao.png" alt="梁山好岗 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/12/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B09%E2%80%94%E2%80%94Collection%E3%80%81%E6%B3%9B%E5%9E%8B/" rel="next" title="Java学习日记——Collection、泛型">
+                <i class="fa fa-chevron-left"></i> Java学习日记——Collection、泛型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="梁山好岗" />
+            
+              <p class="site-author-name" itemprop="name">梁山好岗</p>
+              <p class="site-description motion-element" itemprop="description">站点描述</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/overload042" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-number">1.1.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">1.2.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">1.4.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树"><span class="nav-number">1.5.</span> <span class="nav-text">红黑树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List集合"><span class="nav-number">2.</span> <span class="nav-text">List集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List接口"><span class="nav-number">2.1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口特点"><span class="nav-number">2.1.1.</span> <span class="nav-text">List接口特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口中常用方法"><span class="nav-number">2.1.2.</span> <span class="nav-text">List接口中常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3种遍历方式"><span class="nav-number">2.1.3.</span> <span class="nav-text">3种遍历方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List的子类"><span class="nav-number">2.2.</span> <span class="nav-text">List的子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList集合"><span class="nav-number">2.2.1.</span> <span class="nav-text">ArrayList集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList集合"><span class="nav-number">2.2.2.</span> <span class="nav-text">LinkedList集合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set接口"><span class="nav-number">3.</span> <span class="nav-text">Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet集合"><span class="nav-number">3.1.</span> <span class="nav-text">HashSet集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">3.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不重复原理"><span class="nav-number">3.1.2.</span> <span class="nav-text">不重复原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储自定义类型元素"><span class="nav-number">3.1.3.</span> <span class="nav-text">存储自定义类型元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">3.2.</span> <span class="nav-text">LinkedHashSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变参数"><span class="nav-number">4.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collections"><span class="nav-number">5.</span> <span class="nav-text">Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addAll方法和shuffke方法"><span class="nav-number">5.1.</span> <span class="nav-text">addAll方法和shuffke方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort方法1"><span class="nav-number">5.2.</span> <span class="nav-text">sort方法1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非自定义类型"><span class="nav-number">5.2.1.</span> <span class="nav-text">非自定义类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义类型"><span class="nav-number">5.2.2.</span> <span class="nav-text">自定义类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort方法2"><span class="nav-number">5.3.</span> <span class="nav-text">sort方法2</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梁山好岗</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":false},"log":false});</script></body>
+</html>
