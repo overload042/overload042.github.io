@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|隶书:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java学习每一天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习日记12——异常、线程">
+<meta property="og:url" content="http://yoursite.com/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B012%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8%E3%80%81%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="梁山好岗のBLOG">
+<meta property="og:description" content="Java学习每一天">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP7xfB7t5y1lzOhxp40sHOM9QQ9lDTjgMWVhsfe.UloWwMF0Kmg..4X89BAVJZSIa7ROyO7189Sp2.a9HT1OmemY!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP1UwHxJz0wxmmYCLR82XuSe9TLe1yb*88bVAHse8hpABzqGDVQyAq6EFoPkI0jexUADbFQnlN6ACg9B0bf0kP.4!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP6YOJ9rwmAaWLoav7jt5skWiUq8fNfzeUnM78BgfWH4lLeU46o9ix8waMgz*AjjXmYKj*yGg3lpc8UMbSwnJu7k!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP4d8L.QRn29nG7OoMnCKUmEbr0TT32Nips.vm*bg5NOsXC0rJV7s*DbtyBq417EQDAjYnnuUnJPvI30iex3uEBo!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP3u9RPsHkdyHNJ7hT7LBOONITHAR5OuWOMKk6m*06WcB2s4uxt.9qJuyufLiJKm4Wos2JDbhkgly8SV3Zr2kp7A!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP3JACorD3DYDFe7sjGwT5v2b6YISdC3WwxzXkCxJIWBb4ENVggOetvgK9trk.1hDJRlqOmhqtQuIVfWnXN18XuQ!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP2URV3ZMJO3jCt838IdirzdpZ8feAx9xrvlOdhiOWqeojZwCFziuNji1JnyfYbNMBy7Vg3MYhX93OszqaURIHzI!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP*eKzGuYncdmm7fAwvGf6kzkm*HTGXW.c5odViM.EZuCQwYuAtv*D7NQ0PWXiYpdNpNMYMK*2bOhazbFea1YJxw!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP0F600U570lNuxniM2OaYMR0f8OuPFotwUiaD2SO1q6UFM2bhH6KDnMvHGcrLHoi0Le1S0i0w*MSzn033pxyzfI!/r">
+<meta property="article:published_time" content="2020-07-13T11:02:20.205Z">
+<meta property="article:modified_time" content="2020-07-13T13:34:21.175Z">
+<meta property="article:author" content="梁山好岗">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP7xfB7t5y1lzOhxp40sHOM9QQ9lDTjgMWVhsfe.UloWwMF0Kmg..4X89BAVJZSIa7ROyO7189Sp2.a9HT1OmemY!/r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/13/Java学习日记12——异常、线程/"/>
+
+
+
+
+
+  <title>Java学习日记12——异常、线程 | 梁山好岗のBLOG</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7a13b8db27fbff31ebec5f6408bf7751";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梁山好岗のBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就算是梦话也无妨，再说给我听听吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B012%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8%E3%80%81%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梁山好岗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梁山好岗のBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java学习日记12——异常、线程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-13T19:02:20+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <center>Java学习每一天</center>
+
+<a id="more"></a>
+
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><strong>异常</strong> ：指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止。</p>
+<p>在Java等面向对象的编程语言中，异常本身是一个类，产生异常就是创建异常对象并抛出了一个异常对象。Java处理异常的方式是中断处理。</p>
+<blockquote>
+<p>异常指的并不是语法错误,语法错了,编译不通过,不会产生字节码文件,根本不能运行.</p>
+</blockquote>
+<h3 id="异常体系"><a href="#异常体系" class="headerlink" title="异常体系"></a>异常体系</h3><p>异常机制其实是帮助我们<strong>找到</strong>程序中的问题，异常的根类是<code>java.lang.Throwable</code>，其下有两个子类：<code>java.lang.Error</code>与<code>java.lang.Exception</code>，平常所说的异常指<code>java.lang.Exception</code>。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP7xfB7t5y1lzOhxp40sHOM9QQ9lDTjgMWVhsfe.UloWwMF0Kmg..4X89BAVJZSIa7ROyO7189Sp2.a9HT1OmemY!/r" alt=""></p>
+<p><strong>Throwable体系：</strong></p>
+<ul>
+<li><strong>Error</strong>:严重错误Error，无法通过处理的错误，只能事先避免，好比绝症。</li>
+<li><strong>Exception</strong>:表示异常，异常产生后程序员可以通过代码的方式纠正，使程序继续运行，是必须要处理的。好比感冒、阑尾炎。</li>
+</ul>
+<p><strong>Throwable中的常用方法：</strong></p>
+<ul>
+<li><p><code>public void printStackTrace()</code>:打印异常的详细信息。</p>
+<p><em>包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。</em></p>
+</li>
+<li><p><code>public String getMessage()</code>:获取发生异常的原因。</p>
+<p><em>提示给用户的时候,就提示错误原因。</em></p>
+</li>
+<li><p><code>public String toString()</code>:获取异常的类型和异常描述信息(不用)。</p>
+</li>
+</ul>
+<p><strong><em>出现异常,不要紧张,把异常的简单类名,拷贝到API中去查。</em></strong></p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP1UwHxJz0wxmmYCLR82XuSe9TLe1yb*88bVAHse8hpABzqGDVQyAq6EFoPkI0jexUADbFQnlN6ACg9B0bf0kP.4!/r" alt=""></p>
+<h3 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h3><p>我们平常说的异常就是指Exception，因为这类异常一旦出现，我们就要对代码进行更正，修复程序。</p>
+<p><strong>异常(Exception)的分类</strong>:根据在编译时期还是运行时期去检查异常?</p>
+<ul>
+<li><strong>编译时期异常</strong>:checked异常。在编译时期,就会检查,如果没有处理异常,则编译失败。(如日期格式化异常)</li>
+<li><strong>运行时期异常</strong>:runtime异常。在运行时期,检查异常.在编译时期,运行异常不会编译器检测(不报错)。(如数学异常)</li>
+</ul>
+<p>​    <img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP6YOJ9rwmAaWLoav7jt5skWiUq8fNfzeUnM78BgfWH4lLeU46o9ix8waMgz*AjjXmYKj*yGg3lpc8UMbSwnJu7k!/r" alt=""></p>
+<h3 id="异常的产生过程解析"><a href="#异常的产生过程解析" class="headerlink" title="异常的产生过程解析"></a>异常的产生过程解析</h3><p>先运行下面的程序，程序会产生一个数组索引越界异常ArrayIndexOfBoundsException。我们通过图解来解析下异常产生的过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Exception</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建int类型的数组,并赋值</span></span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> e = getElement(arr,<span class="number">3</span>);</span><br><span class="line">        System.out.println(e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        定义一个方法,获取数组指定索引处的元素</span></span><br><span class="line"><span class="comment">        参数:</span></span><br><span class="line"><span class="comment">            int[] arr</span></span><br><span class="line"><span class="comment">            int index</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getElement</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ele = arr[index];</span><br><span class="line">        <span class="keyword">return</span> ele;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述程序执行过程图解：</p>
+<p> <img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP4d8L.QRn29nG7OoMnCKUmEbr0TT32Nips.vm*bg5NOsXC0rJV7s*DbtyBq417EQDAjYnnuUnJPvI30iex3uEBo!/r" alt=""></p>
+<h2 id="异常的处理"><a href="#异常的处理" class="headerlink" title="异常的处理"></a>异常的处理</h2><p>Java异常处理的五个关键字：<strong>try、catch、finally、throw、throws</strong></p>
+<h3 id="抛出异常throw"><a href="#抛出异常throw" class="headerlink" title="抛出异常throw"></a>抛出异常throw</h3><p>throw<strong>用在方法内</strong>，用来抛出一个异常对象，将这个异常对象传递到调用者处，并结束当前方法的执行。</p>
+<p><strong>使用格式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">throw new 异常类名(参数);</span><br></pre></td></tr></table></figure>
+
+<p> 例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"要访问的arr数组不存在"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> ArrayIndexOutOfBoundsException(<span class="string">"该索引在数组中不存在，已超出范围"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong></p>
+<ol>
+<li><p>throw关键字必须写在方法的内部</p>
+</li>
+<li><p>throw关键字后边new的对象必须是Exception或者Exception的子类对象</p>
+</li>
+<li><p>throw关键字抛出指定的异常对象,我们就必须处理这个异常对象</p>
+<p>​            throw关键字后边创建的是RuntimeException或者是 RuntimeException的子类对象,我们可以不处理,    默认交给JVM处理(打印异常对象,中断程序)</p>
+<p>​            throw关键字后边创建的是编译异常(写代码的时候报错)，我们就必须处理这个异常，要么throws，要    么try…catch</p>
+</li>
+</ol>
+<p><strong>示例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThrowDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//根据索引找对应的元素 </span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> element = getElement(index);</span><br><span class="line">        System.out.println(element);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回索引对应地元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getElement</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123; </span><br><span class="line">        <span class="comment">//创建一个数组 </span></span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">52</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        </span><br><span class="line">       	<span class="comment">//判断  索引是否越界</span></span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span> || index&gt;arr.length-<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// ArrayIndexOutOfBoundsException是一个运行期异常,我们不用处理,默认交给JVM处理</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArrayIndexOutOfBoundsException(<span class="string">"越界异常"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> element = arr[index];</span><br><span class="line">        <span class="keyword">return</span> element;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Objects非空判断"><a href="#Objects非空判断" class="headerlink" title="Objects非空判断"></a>Objects非空判断</h3><p><code>public static &lt;T&gt; T requireNonNull(T obj)</code>:查看指定引用对象不是null。</p>
+<p>用这个方法可以用来判断空指针异常，不需要我们自己写代码判断空指针。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        <span class="comment">//对传递过来的参数进行合法性判断,判断是否为null</span></span><br><span class="line">        <span class="comment">/*if(obj == null)&#123;</span></span><br><span class="line"><span class="comment">            throw new NullPointerException("传递的对象的值是null");</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Objects.requireNonNull(obj);</span></span><br><span class="line">        Objects.requireNonNull(obj,<span class="string">"传递的对象的值是null"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明异常throws"><a href="#声明异常throws" class="headerlink" title="声明异常throws"></a>声明异常throws</h3><p><strong>声明异常</strong>：如果方法内通过throw抛出了<strong>编译时异常</strong>(写代码的时候报错)，我们就必须处理这个异常，要么throws，要么try…catch</p>
+<p><strong>声明异常格式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数) throws 异常类名1,异常类名2…&#123;   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<p>若该方法可能有多种异常情况产生，那么在throws后面可以写多个异常类，用逗号隔开。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThrowsDemo2</span> </span>&#123;</span><br><span class="line">    <span class="comment">// main方法再次抛出，交给Jvm处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        read(<span class="string">"a.txt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// FileNotFoundException是编译异常,抛出了编译异常,就必须处理这个异常</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(String path)</span><span class="keyword">throws</span> FileNotFoundException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//如果不是 a.txt这个文件，则抛出异常</span></span><br><span class="line">        <span class="keyword">if</span> (!path.equals(<span class="string">"a.txt"</span>)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> FileNotFoundException(<span class="string">"文件不存在"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!path.equals(<span class="string">"b.txt"</span>)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IOException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="捕获异常try…catch"><a href="#捕获异常try…catch" class="headerlink" title="捕获异常try…catch"></a>捕获异常try…catch</h3><p><strong>捕获异常</strong>：Java中对异常有针对性的语句进行捕获，可以对出现的异常进行指定方式的处理。</p>
+<p><strong>格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">     编写可能会出现异常的代码</span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型  e)&#123;</span><br><span class="line">     处理异常的代码</span><br><span class="line">     <span class="comment">//记录日志/打印异常信息/继续抛出异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong>try和catch都不能单独使用,必须连用。</p>
+</blockquote>
+<p><strong>示例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryCatchDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 可能出现异常的代码</span></span><br><span class="line">            read(<span class="string">"b.txt"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">          	<span class="comment">//try中抛出的是什么异常，在括号中就定义什么异常类型</span></span><br><span class="line">            <span class="comment">// 打印异常</span></span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"over"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(String path)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//如果不是 a.txt这个文件，则抛出异常</span></span><br><span class="line">        <span class="keyword">if</span> (!path.equals(<span class="string">"a.txt"</span>)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> FileNotFoundException(<span class="string">"文件不存在"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取异常信息：</strong></p>
+<p>Throwable类中定义了一些查看方法:</p>
+<ul>
+<li><code>public String getMessage()</code>:获取异常的描述信息,原因(提示给用户的时候,就提示错误原因。</li>
+</ul>
+<ul>
+<li><code>public String toString()</code>:获取异常的类型和异常描述信息(不用)。</li>
+<li><code>public void printStackTrace()</code>:打印异常的跟踪栈信息并输出到控制台。</li>
+</ul>
+<p>​            <em>包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。</em></p>
+<h3 id="finally-代码块"><a href="#finally-代码块" class="headerlink" title="finally 代码块"></a>finally 代码块</h3><p>在finally代码块中存放的代码无论异常是否发生，都是一定会被执行的。</p>
+<p><strong>注意:</strong></p>
+<ol>
+<li>finally不能单独使用,必须和try一起使用</li>
+<li>finally一般用于资源释放(资源回收),无论程序是否出现异常,最后都要资源释放(IO)</li>
+</ol>
+<p><strong>格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    可能产生异常的代码</span><br><span class="line">&#125;<span class="keyword">catch</span>(定义一个异常的变量,用来接收<span class="keyword">try</span>中抛出的异常对象)&#123;</span><br><span class="line">    异常的处理逻辑,异常异常对象之后,怎么处理异常对象</span><br><span class="line">    一般在工作中,会把异常的信息记录到一个日志中</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">catch</span>(异常类名 变量名)&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    无论是否出现异常都会执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryCatchDemo4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            read(<span class="string">"a.txt"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            <span class="comment">//抓取到的是编译期异常  抛出去的是运行期 </span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"不管程序怎样，这里都将会被执行。"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"over"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 我们 当前的这个方法中 有异常  有编译期异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(String path)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!path.equals(<span class="string">"a.txt"</span>)) &#123;<span class="comment">//如果不是 a.txt这个文件 </span></span><br><span class="line">            <span class="comment">// 我假设  如果不是 a.txt 认为 该文件不存在 是一个错误 也就是异常  throw</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> FileNotFoundException(<span class="string">"文件不存在"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当只有在try或者catch中调用退出JVM的相关方法,此时finally才不会执行,否则finally永远会执行。</p>
+</blockquote>
+<h3 id="多个异常使用捕获"><a href="#多个异常使用捕获" class="headerlink" title="多个异常使用捕获"></a>多个异常使用捕获</h3><p><strong>3种处理方法</strong></p>
+<ol>
+<li>多个异常分别处理。</li>
+<li>多个异常一次捕获，多次处理。</li>
+<li>多个异常一次捕获一次处理。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Exception</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1. 多个异常分别处理。</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">            System.out.println(arr[<span class="number">3</span>]);<span class="comment">//ArrayIndexOutOfBoundsException: 3</span></span><br><span class="line">        &#125;<span class="keyword">catch</span> (ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            List&lt;Integer&gt; list = List.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">            System.out.println(list.get(<span class="number">3</span>));<span class="comment">//IndexOutOfBoundsException: Index 3 out-of-bounds for length 3</span></span><br><span class="line">        &#125;<span class="keyword">catch</span> (IndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 多个异常一次捕获，多次处理。</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">            <span class="comment">//System.out.println(arr[3]);//ArrayIndexOutOfBoundsException: 3</span></span><br><span class="line">            List&lt;Integer&gt; list = List.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">            System.out.println(list.get(<span class="number">3</span>));<span class="comment">//IndexOutOfBoundsException: Index 3 out-of-bounds for length 3</span></span><br><span class="line">        &#125;<span class="keyword">catch</span> (ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            一个try多个catch注意事项:</span></span><br><span class="line"><span class="comment">                catch里边定义的异常变量,如果有子父类关系,那么子类的异常变量必须写在上边,否则就会报错</span></span><br><span class="line"><span class="comment">                ArrayIndexOutOfBoundsException extends IndexOutOfBoundsException</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">/*try &#123;</span></span><br><span class="line"><span class="comment">            int[] arr = &#123;1,2,3&#125;;</span></span><br><span class="line"><span class="comment">            //System.out.println(arr[3]);//ArrayIndexOutOfBoundsException: 3</span></span><br><span class="line"><span class="comment">            List&lt;Integer&gt; list = List.of(1, 2, 3);</span></span><br><span class="line"><span class="comment">            System.out.println(list.get(3));//IndexOutOfBoundsException: Index 3 out-of-bounds for length 3</span></span><br><span class="line"><span class="comment">        &#125;catch (IndexOutOfBoundsException e)&#123;</span></span><br><span class="line"><span class="comment">            System.out.println(e);</span></span><br><span class="line"><span class="comment">        &#125;catch (ArrayIndexOutOfBoundsException e)&#123;</span></span><br><span class="line"><span class="comment">            System.out.println(e);</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 多个异常一次捕获一次处理。</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">            <span class="comment">//System.out.println(arr[3]);//ArrayIndexOutOfBoundsException: 3</span></span><br><span class="line">            List&lt;Integer&gt; list = List.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">            System.out.println(list.get(<span class="number">3</span>));<span class="comment">//IndexOutOfBoundsException: Index 3 out-of-bounds for length 3</span></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>运行时异常被抛出可以不处理。即不捕获也不声明抛出。</p>
+</li>
+<li><p>如果finally有return语句,永远返回finally中的结果,避免该情况. </p>
+</li>
+<li><p>如果父类抛出了多个异常,子类重写父类方法时,抛出和父类相同的异常或者是父类异常的子类或者不抛出异常。</p>
+</li>
+<li><p>父类方法没有抛出异常，子类重写父类该方法时也不可抛出异常。此时子类产生该异常，只能捕获处理，不能声明抛出</p>
+</li>
+</ul>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>java提供的异常类,不够我们使用,需要自己定义一些异常类</p>
+<p><strong>格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 继承于Exception或RuntimeException</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XXXExcepiton</span> <span class="keyword">extends</span> /*<span class="title">Exception</span> */ <span class="title">RuntimeException</span></span>&#123;</span><br><span class="line">            添加一个空参数的构造方法</span><br><span class="line">            添加一个带异常信息的构造方法</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ol>
+<li><p>自定义异常类一般都是以Exception结尾,说明该类是一个异常类</p>
+</li>
+<li><p>自定义异常类,必须的继承Exception或者RuntimeException</p>
+<p>​            继承Exception:那么自定义的异常类就是一个编译期异常,如果方法内部抛出了编译期异常,就必须处理    这个异常,要么throws,要么try…catch</p>
+<p>​            继承RuntimeException:那么自定义的异常类就是一个运行期异常,无需处理,交给虚拟机处理(中断处理)</p>
+</li>
+</ol>
+<p><strong>示例：</strong></p>
+<p>要求：我们模拟注册操作，如果用户名已存在，则抛出异常并提示：亲，该用户名已经被注册。</p>
+<p>首先定义一个登陆异常类RegisterException：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegisterException</span> <span class="keyword">extends</span> /*<span class="title">Exception</span>*/ <span class="title">RuntimeException</span></span>&#123;</span><br><span class="line">    <span class="comment">//添加一个空参数的构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RegisterException</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        添加一个带异常信息的构造方法</span></span><br><span class="line"><span class="comment">        查看源码发现,所有的异常类都会有一个带异常信息的构造方法,方法内部会调用父类带异常信息的构造方法,让父类来处理这个异常信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RegisterException</span><span class="params">(String message)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>模拟登陆操作，使用数组模拟数据库中存储的数据，并提供当前注册账号是否存在方法用于判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01RegisterException</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1.使用数组保存已经注册过的用户名(数据库)</span></span><br><span class="line">    <span class="keyword">static</span> String[] usernames = &#123;<span class="string">"张三"</span>,<span class="string">"李四"</span>,<span class="string">"王五"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="comment">/*throws RegisterException*/</span> </span>&#123;</span><br><span class="line">        <span class="comment">//2.使用Scanner获取用户输入的注册的用户名(前端,页面)</span></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"请输入您要注册的用户名:"</span>);</span><br><span class="line">        String username = sc.next();</span><br><span class="line">        checkUsername(username);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.定义一个方法,对用户输入的中注册的用户名进行判断</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkUsername</span><span class="params">(String username)</span> <span class="comment">/*throws RegisterException*/</span> </span>&#123;</span><br><span class="line">        <span class="comment">//遍历存储已经注册过用户名的数组,获取每一个用户名</span></span><br><span class="line">        <span class="keyword">for</span> (String name : usernames) &#123;</span><br><span class="line">            <span class="comment">//使用获取到的用户名和用户输入的用户名比较</span></span><br><span class="line">            <span class="keyword">if</span>(name.equals(username))&#123;</span><br><span class="line">                <span class="comment">//true:用户名已经存在,抛出RegisterException异常,告知用户"亲，该用户名已经被注册";</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RegisterException(<span class="string">"亲，该用户名已经被注册"</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (RegisterException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                    <span class="keyword">return</span>; <span class="comment">//结束方法</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果循环结束了,还没有找到重复的用户名,提示用户"恭喜您,注册成功!";</span></span><br><span class="line">        System.out.println(<span class="string">"恭喜您,注册成功!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>我们在之前，学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那现在想要设计一个程序，边打游戏边听歌，怎么设计？</p>
+<p>要解决上述问题,咱们得使用多进程或者多线程来解决.</p>
+<h3 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h3><ul>
+<li><strong>并发</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生。</li>
+<li><strong>并行</strong>：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）。</li>
+</ul>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP3u9RPsHkdyHNJ7hT7LBOONITHAR5OuWOMKk6m*06WcB2s4uxt.9qJuyufLiJKm4Wos2JDbhkgly8SV3Zr2kp7A!/r" alt=""></p>
+<h3 id="线程与进程"><a href="#线程与进程" class="headerlink" title="线程与进程"></a>线程与进程</h3><ul>
+<li><p><strong>进程</strong>：是指一个内存中运行的应用程序，每个进程都有一个独立的内存空间，一个应用程序可以同时运行多个进程；进程也是程序的一次执行过程，是系统运行程序的基本单位；系统运行一个程序即是一个进程从创建、运行到消亡的过程。</p>
+</li>
+<li><p><strong>线程</strong>：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。 </p>
+<p>简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程 </p>
+</li>
+</ul>
+<p>我们可以再电脑底部任务栏，右键—–&gt;打开任务管理器,可以查看当前任务的进程：</p>
+<p><strong>进程</strong></p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP3JACorD3DYDFe7sjGwT5v2b6YISdC3WwxzXkCxJIWBb4ENVggOetvgK9trk.1hDJRlqOmhqtQuIVfWnXN18XuQ!/r" alt=""></p>
+<p><strong>线程</strong></p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP2URV3ZMJO3jCt838IdirzdpZ8feAx9xrvlOdhiOWqeojZwCFziuNji1JnyfYbNMBy7Vg3MYhX93OszqaURIHzI!/r" alt=""></p>
+<h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><ul>
+<li><p>分时调度</p>
+<p>所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间。</p>
+</li>
+<li><p>抢占式调度</p>
+<p>优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个(线程随机性)，Java使用的为抢占式调度。</p>
+<ul>
+<li>设置线程的优先级</li>
+</ul>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP*eKzGuYncdmm7fAwvGf6kzkm*HTGXW.c5odViM.EZuCQwYuAtv*D7NQ0PWXiYpdNpNMYMK*2bOhazbFea1YJxw!/r" alt="设置线程优先级"></p>
+<ul>
+<li><p>抢占式调度详解</p>
+<p>大部分操作系统都支持多进程并发运行，现在的操作系统几乎都支持同时运行多个程序。比如：现在我们上课一边使用编辑器，一边使用录屏软件，同时还开着画图板，dos窗口等软件。此时，这些程序是在同时运行，”感觉这些软件好像在同一时刻运行着“。</p>
+<p>实际上，CPU(中央处理器)使用抢占式调度模式在多个线程间进行着高速的切换。对于CPU的一个核而言，某个时刻，只能执行一个线程，而 CPU的在多个线程间切换速度相对我们的感觉要快，看上去就是在同一时刻运行。<br>其实，多线程程序并不能提高程序的运行速度，但能够提高程序运行效率，让CPU的使用率更高。</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN2w8HrF/x8kY4KA5QbxWMHFw3I4rP0F600U570lNuxniM2OaYMR0f8OuPFotwUiaD2SO1q6UFM2bhH6KDnMvHGcrLHoi0Le1S0i0w*MSzn033pxyzfI!/r" alt="抢占式调度"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="创建线程类"><a href="#创建线程类" class="headerlink" title="创建线程类"></a>创建线程类</h3><p>Thread类：是描述线程的类,我们想要实现多线程程序,就必须继承Thread类</p>
+<p><strong>实现步骤：</strong></p>
+<ol>
+<li>创建一个Thread类的子类</li>
+<li>在Thread类的子类中重写Thread类中的run方法,设置线程任务</li>
+<li>创建Thread类的子类对象</li>
+<li>调用Thread类中的方法start方法,开启新的线程,执行run方法</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li>void start() 使该线程开始执行；Java 虚拟机调用该线程的 run 方法。</li>
+<li>结果是两个线程并发地运行；当前线程（main线程）和另一个线程（创建的新线程,执行其 run 方法）。</li>
+<li>多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。</li>
+<li>java程序属于抢占式调度,那个线程的优先级高,那个线程优先执行;同一个优先级,随机选择一个执行</li>
+</ol>
+<p><strong>多线程</strong></p>
+<p>创建一个Thread类的子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建一个Thread类的子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="comment">//2.在Thread类的子类中重写Thread类中的run方法,设置线程任务(开启线程要做什么?)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run:"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//3.创建Thread类的子类对象</span></span><br><span class="line">        MyThread mt = <span class="keyword">new</span> MyThread();</span><br><span class="line">        <span class="comment">//4.调用Thread类中的方法start方法,开启新的线程,执行run方法</span></span><br><span class="line">        mt.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main:"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/weixin.png" alt="梁山好岗 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/zhifubao.png" alt="梁山好岗 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B011%E2%80%94%E2%80%94Map/" rel="next" title="Java学习日记11——Map">
+                <i class="fa fa-chevron-left"></i> Java学习日记11——Map
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="梁山好岗" />
+            
+              <p class="site-author-name" itemprop="name">梁山好岗</p>
+              <p class="site-description motion-element" itemprop="description">站点描述</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/overload042" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">1.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异常体系"><span class="nav-number">1.1.</span> <span class="nav-text">异常体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常分类"><span class="nav-number">1.2.</span> <span class="nav-text">异常分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常的产生过程解析"><span class="nav-number">1.3.</span> <span class="nav-text">异常的产生过程解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常的处理"><span class="nav-number">2.</span> <span class="nav-text">异常的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抛出异常throw"><span class="nav-number">2.1.</span> <span class="nav-text">抛出异常throw</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objects非空判断"><span class="nav-number">2.2.</span> <span class="nav-text">Objects非空判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明异常throws"><span class="nav-number">2.3.</span> <span class="nav-text">声明异常throws</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获异常try…catch"><span class="nav-number">2.4.</span> <span class="nav-text">捕获异常try…catch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally-代码块"><span class="nav-number">2.5.</span> <span class="nav-text">finally 代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个异常使用捕获"><span class="nav-number">2.6.</span> <span class="nav-text">多个异常使用捕获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义异常"><span class="nav-number">3.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">4.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并发与并行"><span class="nav-number">4.1.</span> <span class="nav-text">并发与并行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程与进程"><span class="nav-number">4.2.</span> <span class="nav-text">线程与进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程调度"><span class="nav-number">4.3.</span> <span class="nav-text">线程调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程类"><span class="nav-number">4.4.</span> <span class="nav-text">创建线程类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梁山好岗</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":false},"log":false});</script></body>
+</html>

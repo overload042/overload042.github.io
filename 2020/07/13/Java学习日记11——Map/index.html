@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|隶书:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java学习每一天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习日记11——Map">
+<meta property="og:url" content="http://yoursite.com/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B011%E2%80%94%E2%80%94Map/index.html">
+<meta property="og:site_name" content="梁山好岗のBLOG">
+<meta property="og:description" content="Java学习每一天">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5vLIOnErRGfAdMY48yxlbSgJWTiQZ4tC6FGnOr7KotHbrkWOxLinQ05*wtR2D8m25q2cEdlrB1tFhdeOJJfxWI!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP4DGWdbrD5SzObkdrxM0YQiU5x1V60p8ZbgLI0k9G1T.Ujw7iqpujkfottlds*1MAbMznf.1RX0bRtLIunyTgeo!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPwr.2CBzuJdY81Ql7IlynaGhsOnl3HuKIK*.uhyZdTM7dvVMxnq5BoaRQwQpDOWcv3dzg9adjjFtmydd3IizV7M!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP6FQ2w0Wqpc2VMiXIEAw1BaKsgyWAIPi1Rm8CwgIRIV4gejIo67N3JW7NrKTYUb9.vOLIhC*Efeaq7K7*IV*Pl0!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP*QZORl2mpS5doZX*Zn*b.6OcUPSKdBbubp4y*VdOhz9hjBqCElgZsooqWYPzGOEcp9KLIJEgbalJwrqqNwMDAQ!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP05dpvwLDjtlVcJoTQlK0P28w7j63rnUp368TB64jXlXhoXZigA2kUiXIFF1Kuey1cnzNaASZwU8*F6gUdlKSaw!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxLugXdoN.jDsmJKI8Kk4ZoplGV9YQ1Vw3zR5dfz15kyJ*Chi4TjVLbkoII1r83iVDm7CUdm9VmTLrBDuplktis!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPyBhuUyr9kuujGYM9Gy3HDa27TY2rud314bdWEhoMI3WmXjjcs188CrkNnIys2JYNz5DspMyWaLholUaCbFUcBc!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5X5Rgc89e3RW0nTzXxVs*P0v1uZXn4UD3xd6Mm2qg23gDg8*jeTz9wlMkBElwasYYN7od9024Y2XfqrzwlciB4!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPyUaYfHY*CP0k66S15r0Ubyp9N4LPEt1.0liERFQJ8777hMEZQZaZ3rWFf87hGDflA*XGOP*TJ4zI8IbyHQtmDY!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxundq6v7wmyfcWcAcfJEvqfT98tuVTqOBcm*gkko4YpAhqbKZNCZcfZyAm6lFG6bpjlPIhlqYeWdricMQnM4zE!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP6U2S3qB7Ot3yIC1mWZ9.WEzGNkM35LM*6GEL*qkJAWr.WmnvS.YIr.gp9NSivaM6ljjGB554g6wpgzbF1N9ncA!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5C8D54ZDcuLBTrM0wPsZ*mxs7h94x1j7oR42ML9xJEKzq7E.O5LMfxzm*FvLyRiJaLXXuiYHAUX51812ZMl7TI!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP83YeWGRaw64JBhzIfMuK2xspMBx9J*H5RYU0K5CIwmZAcoO2hNEm6p6XiUrVhP*RalCcYtzywfV2B99FIdfreQ!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP3voeElUr4a0Xt5XNjASZMpLucMhrxCjmBUNWiGN8ruOCtoos*XbNHra92tOS5TWYYjnqcBs5qfSjYce3z4Ck5g!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxJtTqdA5CXLX4BYU1gsjcC6xlMHF*5PElPIJfNWsqcORwtAMsad7G2B4LpbMeSIHb48ZpaXrnUFMNtMFvPgEbo!/r">
+<meta property="og:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP*S*tQ6mjTSJVsau0mnQ0QM3uz.FQZKHwou3vdtQq8QoBAXEiLjlp3LILwr2cMMlBw9F*LDzeSvj8k7Udx4FEVU!/r">
+<meta property="article:published_time" content="2020-07-13T05:07:59.257Z">
+<meta property="article:modified_time" content="2020-07-13T13:37:15.639Z">
+<meta property="article:author" content="梁山好岗">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5vLIOnErRGfAdMY48yxlbSgJWTiQZ4tC6FGnOr7KotHbrkWOxLinQ05*wtR2D8m25q2cEdlrB1tFhdeOJJfxWI!/r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/13/Java学习日记11——Map/"/>
+
+
+
+
+
+  <title>Java学习日记11——Map | 梁山好岗のBLOG</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7a13b8db27fbff31ebec5f6408bf7751";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梁山好岗のBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就算是梦话也无妨，再说给我听听吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B011%E2%80%94%E2%80%94Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梁山好岗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梁山好岗のBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java学习日记11——Map</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-13T13:07:59+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <center>Java学习每一天</center>
+<a id="more"></a>
+
+<h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h2><p><strong>特点:</strong></p>
+<ol>
+<li>Map集合是一个双列集合,一个元素包含两个值(一个key,一个value)</li>
+<li>Map集合中的元素,key和value的数据类型可以相同,也可以不同</li>
+<li>Map集合中的元素,key是不允许重复的,value是可以重复的</li>
+<li>Map集合中的元素,key和value是一一对应</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p>Map接口中定义了很多方法，常用的如下：</p>
+<ul>
+<li><code>public V put(K key, V value)</code>:  把指定的键与指定的值添加到Map集合中。</li>
+<li><code>public V remove(Object key)</code>: 把指定的键 所对应的键值对元素 在Map集合中删除，返回被删除元素的值。</li>
+<li><code>public V get(Object key)</code> 根据指定的键，在Map集合中获取对应的值。</li>
+<li><code>boolean containsKey(Object key)</code> 判断集合中是否包含指定的键。</li>
+</ul>
+<p>Map接口的方法演示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Map</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        show04();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        boolean containsKey(Object key) 判断集合中是否包含指定的键。</span></span><br><span class="line"><span class="comment">        包含返回true,不包含返回false</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show04</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"赵丽颖"</span>,<span class="number">168</span>);</span><br><span class="line">        map.put(<span class="string">"杨颖"</span>,<span class="number">165</span>);</span><br><span class="line">        map.put(<span class="string">"林志玲"</span>,<span class="number">178</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> b1 = map.containsKey(<span class="string">"赵丽颖"</span>);</span><br><span class="line">        System.out.println(<span class="string">"b1:"</span>+b1);<span class="comment">//b1:true</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> b2 = map.containsKey(<span class="string">"赵颖"</span>);</span><br><span class="line">        System.out.println(<span class="string">"b2:"</span>+b2);<span class="comment">//b2:false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        public V get(Object key) 根据指定的键，在Map集合中获取对应的值。</span></span><br><span class="line"><span class="comment">            返回值:</span></span><br><span class="line"><span class="comment">                key存在,返回对应的value值</span></span><br><span class="line"><span class="comment">                key不存在,返回null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show03</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"赵丽颖"</span>,<span class="number">168</span>);</span><br><span class="line">        map.put(<span class="string">"杨颖"</span>,<span class="number">165</span>);</span><br><span class="line">        map.put(<span class="string">"林志玲"</span>,<span class="number">178</span>);</span><br><span class="line"></span><br><span class="line">        Integer v1 = map.get(<span class="string">"杨颖"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v1:"</span>+v1);<span class="comment">//v1:165</span></span><br><span class="line"></span><br><span class="line">        Integer v2 = map.get(<span class="string">"迪丽热巴"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v2:"</span>+v2);<span class="comment">//v2:null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        public V remove(Object key): 把指定的键 所对应的键值对元素 在Map集合中删除，返回被删除元素的值。</span></span><br><span class="line"><span class="comment">            返回值:V</span></span><br><span class="line"><span class="comment">                key存在,v返回被删除的值</span></span><br><span class="line"><span class="comment">                key不存在,v返回null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"赵丽颖"</span>,<span class="number">168</span>);</span><br><span class="line">        map.put(<span class="string">"杨颖"</span>,<span class="number">165</span>);</span><br><span class="line">        map.put(<span class="string">"林志玲"</span>,<span class="number">178</span>);</span><br><span class="line">        System.out.println(map);<span class="comment">//&#123;林志玲=178, 赵丽颖=168, 杨颖=165&#125;</span></span><br><span class="line"></span><br><span class="line">        Integer v1 = map.remove(<span class="string">"林志玲"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v1:"</span>+v1);<span class="comment">//v1:178</span></span><br><span class="line"></span><br><span class="line">        System.out.println(map);<span class="comment">//&#123;赵丽颖=168, 杨颖=165&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//int v2 = map.remove("林志颖");//自动拆箱  NullPointerException</span></span><br><span class="line">        Integer v2 = map.remove(<span class="string">"林志颖"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v2:"</span>+v2);<span class="comment">//v2:null</span></span><br><span class="line"></span><br><span class="line">        System.out.println(map);<span class="comment">//&#123;赵丽颖=168, 杨颖=165&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        public V put(K key, V value):  把指定的键与指定的值添加到Map集合中。</span></span><br><span class="line"><span class="comment">            返回值:v</span></span><br><span class="line"><span class="comment">                存储键值对的时候,key不重复,返回值V是null</span></span><br><span class="line"><span class="comment">                存储键值对的时候,key重复,会使用新的value替换map中重复的value,返回被替换的value值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象,多态</span></span><br><span class="line">        Map&lt;String,String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        String v1 = map.put(<span class="string">"李晨"</span>, <span class="string">"范冰冰1"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v1:"</span>+v1);<span class="comment">//v1:null</span></span><br><span class="line"></span><br><span class="line">        String v2 = map.put(<span class="string">"李晨"</span>, <span class="string">"范冰冰2"</span>);</span><br><span class="line">        System.out.println(<span class="string">"v2:"</span>+v2);<span class="comment">//v2:范冰冰1</span></span><br><span class="line"></span><br><span class="line">        System.out.println(map);<span class="comment">//&#123;李晨=范冰冰2&#125;</span></span><br><span class="line"></span><br><span class="line">        map.put(<span class="string">"冷锋"</span>,<span class="string">"龙小云"</span>);</span><br><span class="line">        map.put(<span class="string">"杨过"</span>,<span class="string">"小龙女"</span>);</span><br><span class="line">        map.put(<span class="string">"尹志平"</span>,<span class="string">"小龙女"</span>);</span><br><span class="line">        System.out.println(map);<span class="comment">//&#123;杨过=小龙女, 尹志平=小龙女, 李晨=范冰冰2, 冷锋=龙小云&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><h4 id="keyset-方法"><a href="#keyset-方法" class="headerlink" title="keyset()方法"></a>keyset()方法</h4><p><code>public Set&lt;K&gt; keySet()</code>: 获取Map集合中所有的键，存储到Set集合中。</p>
+<p><strong>分析步骤：</strong></p>
+<ol>
+<li>获取Map中所有的键，由于键是唯一的，所以返回一个Set集合存储所有的键。方法提示:<code>keyset()</code></li>
+<li>遍历键的Set集合，得到每一个键。</li>
+<li>根据键，获取键所对应的值。方法提示:<code>get(K key)</code></li>
+</ol>
+<p><strong>代码演示：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02KeySet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"赵丽颖"</span>,<span class="number">168</span>);</span><br><span class="line">        map.put(<span class="string">"杨颖"</span>,<span class="number">165</span>);</span><br><span class="line">        map.put(<span class="string">"林志玲"</span>,<span class="number">178</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.使用Map集合中的方法keySet(),把Map集合所有的key取出来,存储到一个Set集合中</span></span><br><span class="line">        Set&lt;String&gt; set = map.keySet();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.遍历set集合,获取Map集合中的每一个key</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//使用迭代器遍历Set集合</span></span><br><span class="line">        Iterator&lt;String&gt; it = set.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext())&#123;</span><br><span class="line">            String key = it.next();</span><br><span class="line">            <span class="comment">//3.通过Map集合中的方法get(key),通过key找到value</span></span><br><span class="line">            Integer value = map.get(key);</span><br><span class="line">            System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"-------------------"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//使用增强for遍历Set集合</span></span><br><span class="line">        <span class="keyword">for</span>(String key : set)&#123;</span><br><span class="line">            <span class="comment">//3.通过Map集合中的方法get(key),通过key找到value</span></span><br><span class="line">            Integer value = map.get(key);</span><br><span class="line">            System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="entrySet-方法"><a href="#entrySet-方法" class="headerlink" title="entrySet()方法"></a>entrySet()方法</h4><p><code>public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</code>: 获取到Map集合中所有的<strong>键值对对象</strong>的集合(Set集合)。</p>
+<p><code>Entry</code>是<code>Map</code>接口的内部类，将键值对的对应关系封装成了对象。即<strong>键值对对象</strong>。</p>
+<p><code>Entry</code>的方法：</p>
+<ul>
+<li><code>public K getKey()</code>：获取Entry对象中的键。</li>
+<li><code>public V getValue()</code>：获取Entry对象中的值。</li>
+</ul>
+<p><strong>分析步骤：</strong></p>
+<ol>
+<li>使用Map集合中的方法entrySet(),把Map集合中多个Entry对象取出来,存储到一个Set集合中</li>
+<li>遍历Set集合,获取每一个Entry对象</li>
+<li>使用Entry对象中的方法getKey()和getValue()获取键与值</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03EntrySet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"赵丽颖"</span>,<span class="number">168</span>);</span><br><span class="line">        map.put(<span class="string">"杨颖"</span>,<span class="number">165</span>);</span><br><span class="line">        map.put(<span class="string">"林志玲"</span>,<span class="number">178</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.使用Map集合中的方法entrySet(),把Map集合中多个Entry对象取出来,存储到一个Set集合中</span></span><br><span class="line">        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; set = map.entrySet();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.遍历Set集合,获取每一个Entry对象</span></span><br><span class="line">        <span class="comment">//使用迭代器遍历Set集合</span></span><br><span class="line">        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; it = set.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            Map.Entry&lt;String, Integer&gt; entry = it.next();</span><br><span class="line">            <span class="comment">//3.使用Entry对象中的方法getKey()和getValue()获取键与值</span></span><br><span class="line">            String key = entry.getKey();</span><br><span class="line">            Integer value = entry.getValue();</span><br><span class="line">            System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"-----------------------"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//使用增强for遍历Set集合</span></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String,Integer&gt; entry:set)&#123;</span><br><span class="line">            <span class="comment">//3.使用Entry对象中的方法getKey()和getValue()获取键与值</span></span><br><span class="line">            String key = entry.getKey();</span><br><span class="line">            Integer value = entry.getValue();</span><br><span class="line">            System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong>Map集合不能直接使用迭代器或者foreach进行遍历。但是转成Set之后就可以使用了。</p>
+</blockquote>
+<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p><strong>特点：</strong></p>
+<ol>
+<li><p>底层是一个哈希表，是一个线程不安全的集合，是多线程的集合，速度快</p>
+<p>​            DK1.8之前:数组+单向链表</p>
+<p>​            JDK1.8之后:数组+单向链表|红黑树(链表的长度超过8):提高查询的速度</p>
+</li>
+<li><p>hashMap集合是一个无序的集合,存储元素和取出元素的顺序有可能不一致</p>
+</li>
+</ol>
+<p><strong>HashMap存储自定义类型键值</strong></p>
+<p>Map集合保证key是唯一的：如果自定义类型作为key储存，必须重写hashCode方法和equals方法,以保证key唯一。</p>
+<h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h4><p><strong>特点：</strong></p>
+<ol>
+<li>LinkedHashMap集合底层是哈希表+链表(保证迭代的顺序)</li>
+<li>LinkedHashMap集合是一个<strong>有序</strong>的集合,存储元素和取出元素的顺序是一致的</li>
+</ol>
+<h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><p><strong>特点：</strong></p>
+<ol>
+<li>底层也是一个哈希表，是一个线程安全的集合，是单线程集合，速度慢</li>
+<li>不能存储null值，null键</li>
+<li>已经被取代了，Hashtable的子类Properties依然活跃在历史舞台</li>
+</ol>
+<h2 id="静态方法of"><a href="#静态方法of" class="headerlink" title="静态方法of"></a>静态方法of</h2><p>JDK9的新特性:</p>
+<p><code>static &lt;E&gt; List&lt;E&gt; of(E... elements)</code>：可以给集合一次性添加多个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01JDK9</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = List.of(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>);</span><br><span class="line">        System.out.println(list); <span class="comment">// [a, b, a, c, d]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意:</strong></p>
+<ol>
+<li>of方法只适用于List接口，Set接口，Map接口，不适用于接接口的实现类</li>
+<li>of方法的返回值是一个不能改变的集合，集合不能再使用add，put方法添加元素，会抛出异常</li>
+<li>Set接口和Map接口在调用of方法的时候，不能有重复的元素，否则会抛出异常</li>
+</ol>
+</blockquote>
+<h2 id="Debug追踪"><a href="#Debug追踪" class="headerlink" title="Debug追踪"></a>Debug追踪</h2><p><strong>使用IDEA的断点调试功能，查看程序的运行过程</strong></p>
+<ol>
+<li><p>在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序     </p>
+<p>   <img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5vLIOnErRGfAdMY48yxlbSgJWTiQZ4tC6FGnOr7KotHbrkWOxLinQ05*wtR2D8m25q2cEdlrB1tFhdeOJJfxWI!/r" alt=""></p>
+</li>
+<li><p>点击Debug运行模式       <img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP4DGWdbrD5SzObkdrxM0YQiU5x1V60p8ZbgLI0k9G1T.Ujw7iqpujkfottlds*1MAbMznf.1RX0bRtLIunyTgeo!/r" alt="">                                                                                                                                                                      </p>
+</li>
+<li><p>程序停止在断点上不再执行，而IDEA最下方打开了Debug调试窗口  </p>
+<p> <img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPwr.2CBzuJdY81Ql7IlynaGhsOnl3HuKIK*.uhyZdTM7dvVMxnq5BoaRQwQpDOWcv3dzg9adjjFtmydd3IizV7M!/r" alt="">)<img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP6FQ2w0Wqpc2VMiXIEAw1BaKsgyWAIPi1Rm8CwgIRIV4gejIo67N3JW7NrKTYUb9.vOLIhC*Efeaq7K7*IV*Pl0!/r" alt=""></p>
+</li>
+<li><p>Debug调试窗口介绍</p>
+<p> <img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP*QZORl2mpS5doZX*Zn*b.6OcUPSKdBbubp4y*VdOhz9hjBqCElgZsooqWYPzGOEcp9KLIJEgbalJwrqqNwMDAQ!/r" alt=""></p>
+</li>
+<li><p>快捷键F8，代码向下执行一行,第九行执行完毕，执行到第10行（第10行还未执行）</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP05dpvwLDjtlVcJoTQlK0P28w7j63rnUp368TB64jXlXhoXZigA2kUiXIFF1Kuey1cnzNaASZwU8*F6gUdlKSaw!/r" alt=""></p>
+</li>
+<li><p>切换到控制台面板，控制台显示 请录入一个字符串： 并且等待键盘录入</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxLugXdoN.jDsmJKI8Kk4ZoplGV9YQ1Vw3zR5dfz15kyJ*Chi4TjVLbkoII1r83iVDm7CUdm9VmTLrBDuplktis!/r" alt=""></p>
+</li>
+<li><p>快捷键F8，程序继续向后执行，执行键盘录入操作，在控制台录入数据 ababcea</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPyBhuUyr9kuujGYM9Gy3HDa27TY2rud314bdWEhoMI3WmXjjcs188CrkNnIys2JYNz5DspMyWaLholUaCbFUcBc!/r" alt=""></p>
+<p>回车之后效果：<img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5X5Rgc89e3RW0nTzXxVs*P0v1uZXn4UD3xd6Mm2qg23gDg8*jeTz9wlMkBElwasYYN7od9024Y2XfqrzwlciB4!/r" alt=""></p>
+<p>调试界面效果：<img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPyUaYfHY*CP0k66S15r0Ubyp9N4LPEt1.0liERFQJ8777hMEZQZaZ3rWFf87hGDflA*XGOP*TJ4zI8IbyHQtmDY!/r" alt=""></p>
+</li>
+<li><p>此时到达findChar方法，快捷键F7，进入方法findChar</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxundq6v7wmyfcWcAcfJEvqfT98tuVTqOBcm*gkko4YpAhqbKZNCZcfZyAm6lFG6bpjlPIhlqYeWdricMQnM4zE!/r" alt=""></p>
+</li>
+<li><p>快捷键F8 接续执行，创建了map对象，变量区域显示</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP6U2S3qB7Ot3yIC1mWZ9.WEzGNkM35LM*6GEL*qkJAWr.WmnvS.YIr.gp9NSivaM6ljjGB554g6wpgzbF1N9ncA!/r" alt=""></p>
+</li>
+<li><p>快捷键F8 接续执行，进入到循环中，循环变量i为 0,F8再继续执行，就获取到变量c赋值为字符‘a’ 字节值97</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP5C8D54ZDcuLBTrM0wPsZ*mxs7h94x1j7oR42ML9xJEKzq7E.O5LMfxzm*FvLyRiJaLXXuiYHAUX51812ZMl7TI!/r" alt=""></p>
+</li>
+<li><p>快捷键F8 接续执行，进入到判断语句中，因为该字符 不在Map集合键集中，再按F8执行，进入该判断中</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP83YeWGRaw64JBhzIfMuK2xspMBx9J*H5RYU0K5CIwmZAcoO2hNEm6p6XiUrVhP*RalCcYtzywfV2B99FIdfreQ!/r" alt=""></p>
+</li>
+<li><p>快捷键F8 接续执行，循环结束，进入下次循环，此时map中已经添加一对儿元素</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP3voeElUr4a0Xt5XNjASZMpLucMhrxCjmBUNWiGN8ruOCtoos*XbNHra92tOS5TWYYjnqcBs5qfSjYce3z4Ck5g!/r" alt=""></p>
+</li>
+<li><p>快捷键F8 接续执行，进入下次循环，再继续上面的操作，我们就可以看到代码每次是如何执行的了</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rPxJtTqdA5CXLX4BYU1gsjcC6xlMHF*5PElPIJfNWsqcORwtAMsad7G2B4LpbMeSIHb48ZpaXrnUFMNtMFvPgEbo!/r" alt=""></p>
+</li>
+<li><p>如果不想继续debug,那么可以使用快捷键F9,程序正常执行到结束，程序结果在控制台显示</p>
+<p><img src="http://r.photo.store.qq.com/psc?/V13BTMQN1SCEyI/x8kY4KA5QbxWMHFw3I4rP*S*tQ6mjTSJVsau0mnQ0QM3uz.FQZKHwou3vdtQq8QoBAXEiLjlp3LILwr2cMMlBw9F*LDzeSvj8k7Udx4FEVU!/r" alt=""></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/weixin.png" alt="梁山好岗 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/zhifubao.png" alt="梁山好岗 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/12/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B010%E2%80%94%E2%80%94List%E3%80%81Set%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%81Collections/" rel="next" title="Java学习日记10——List、Set、数据结构、Collections">
+                <i class="fa fa-chevron-left"></i> Java学习日记10——List、Set、数据结构、Collections
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/13/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B012%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8%E3%80%81%E7%BA%BF%E7%A8%8B/" rel="prev" title="Java学习日记12——异常、线程">
+                Java学习日记12——异常、线程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="梁山好岗" />
+            
+              <p class="site-author-name" itemprop="name">梁山好岗</p>
+              <p class="site-description motion-element" itemprop="description">站点描述</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/overload042" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map集合"><span class="nav-number">1.</span> <span class="nav-text">Map集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">1.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历"><span class="nav-number">1.2.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#keyset-方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">keyset()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#entrySet-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">entrySet()方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类"><span class="nav-number">1.3.</span> <span class="nav-text">子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">1.3.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">1.3.2.</span> <span class="nav-text">LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hashtable"><span class="nav-number">1.3.3.</span> <span class="nav-text">Hashtable</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法of"><span class="nav-number">2.</span> <span class="nav-text">静态方法of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug追踪"><span class="nav-number">3.</span> <span class="nav-text">Debug追踪</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梁山好岗</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":false},"log":false});</script></body>
+</html>
